@@ -12,7 +12,6 @@ class Groover:
             raise ValueError("range size those not match the domain size")
         
         
-        
         self.rangeOfFunction = rangeOfFunction
 
     def run(self):
@@ -29,7 +28,7 @@ class Groover:
     def rotationMatrix(self):
         identity = np.eye(self.numberOfSates)
 
-        for i in range(self.numberOfSates - 1):
+        for i in range(self.numberOfSates):
             identity[i][i] = (-1) ** self.rangeOfFunction[i]
 
         return identity
@@ -59,5 +58,5 @@ class Groover:
         return 1/np.sqrt(2) * matrix
 
 
-groover_instance = Groover(numberOfElementsInputDomain=2, rangeOfFunction=np.array([0, 1, 0, 0]))
+groover_instance = Groover(numberOfElementsInputDomain=2, rangeOfFunction=np.array([0, 0, 1, 0]))
 groover_instance.run()
