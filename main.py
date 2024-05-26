@@ -18,8 +18,6 @@ class Groover:
     def getStartingState(self):
         startingState = self.state0()
 
-        print(startingState)
-
         identity = self.vMath.getIdentity()
         notM = self.vMath.getNot()
         hadamard = self.vMath.gethadamard()
@@ -28,11 +26,11 @@ class Groover:
         return np.dot(gate2, np.dot(gate1, startingState))
 
     def run(self):
-
         startingState = self.getStartingState()
-        print(startingState)
    
-        # h = self.applyHadamard(h)
+        h = self.applyHadamard(startingState)
+
+        print(h)
 
         # x = self.rotateOverB(h)
 
@@ -82,10 +80,10 @@ class Groover:
     def hadamardN(self):
         hadamardForNSates = self.hadamard()
 
-        for i in range(self.numberOfElementsInputDomain - 1):
+        for i in range(self.numQbits - 1):
             hadamardForNSates = np.kron(hadamardForNSates, self.hadamard())
 
-        return hadamardForNSates
+        return np.kron(hadamardForNSates, self.vMath.getIdentity())
     
     def hadamard(self):
         matrix = np.ones((2, 2))
