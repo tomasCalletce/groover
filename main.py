@@ -36,6 +36,8 @@ class Groover:
             had = self.applyHadamard(afterRotB)
             xMapped0 = self.rotateOver0(had)
             state = self.applyHadamard(xMapped0)
+
+        print(state)
     
     def rotationMatrix0(self):
         rot = np.eye(self.numberOfSates)
